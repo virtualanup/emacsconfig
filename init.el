@@ -1,30 +1,14 @@
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-(load-theme 'solarized-dark t)
+;; add this directory to the load path
+(add-to-list 'load-path user-emacs-directory)
+
+;;change appearance early during startup
+(require 'appearance)
 
 (setq inhibit-startup-message   t)   ; Don't want any startup message
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving 
-
-;;nice line numbering
-(global-linum-mode t)
-(setq linum-format " %d ")
-(column-number-mode t)
-(size-indication-mode t)
-
-;; remove the scroll bar
-(scroll-bar-mode -1)
-
-;; the blinking cursor is nothing, but an annoyance
-(blink-cursor-mode -1)
-
-;;remove the menu bar
-(menu-bar-mode -1) 
-
-;; remove the toolbar
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
 
 ;; nice scrolling
 (setq scroll-margin 0

@@ -1,0 +1,24 @@
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+
+(load-theme 'solarized-dark t)
+
+;;nice line numbering
+(global-linum-mode t)
+(setq linum-format " %d ")
+(column-number-mode t)
+(size-indication-mode t)
+
+;; remove the scroll bar
+(scroll-bar-mode -1)
+
+;; the blinking cursor is nothing, but an annoyance
+(blink-cursor-mode -1)
+
+;;remove the menu bar
+(menu-bar-mode -1) 
+
+;; remove the toolbar
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode -1))
+
+(provide 'appearance)
