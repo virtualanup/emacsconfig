@@ -21,4 +21,7 @@
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode -1))
 
+;; Highlight matching parentheses when the point is on them.
+(show-paren-mode 1)
+
 (provide 'appearance)

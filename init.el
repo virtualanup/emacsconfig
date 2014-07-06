@@ -20,7 +20,7 @@
 
 ;; show file or buffer name
 (setq frame-title-format
-      '("" invocation-name " : virtualanup - " (:eval (if (buffer-file-name)
+      '("virtualanup - " (:eval (if (buffer-file-name)
                                             (abbreviate-file-name (buffer-file-name))
                                           "%b"))))
 ;; Start eshell or switch to it if it's active.
@@ -71,4 +71,29 @@ This follows freedesktop standards, should work in X servers."
 
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
-(global-set-key [(control h)] 'delete-backward-char)
+
+;; Use shell-like backspace C-h, rebind help to F1
+(define-key key-translation-map [?\C-h] [?\C-?])
+(global-set-key (kbd "<f1>") 'help-command)
+
+;;use alt-h for deleting previous word
+(global-set-key (kbd "M-h") 'backward-kill-word)
+
+
+
+;; Transpose stuff with M-t
+(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+(global-set-key (kbd "M-t l") 'transpose-lines)
+(global-set-key (kbd "M-t w") 'transpose-words)
+(global-set-key (kbd "M-t s") 'transpose-sexps)
+(global-set-key (kbd "M-t p") 'transpose-params)
+
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+
+
+;; Comment/uncomment block
+(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c u") 'uncomment-region)
+
+(global-set-key (kbd "C-c C-k") 'eval-buffer)
