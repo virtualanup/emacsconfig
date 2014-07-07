@@ -105,3 +105,7 @@ This follows freedesktop standards, should work in X servers."
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(require 'uniquify)
+(setq uniquify-strip-common-suffix t)
+(setq uniquify-buffer-name-style 'post-forward)
