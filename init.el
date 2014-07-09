@@ -5,11 +5,12 @@
 ;;change appearance early during startup
 (require 'appearance)
 
+
 (setq inhibit-startup-message   t)   ; Don't want any startup message
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving 
-(desktop-save-mode 1)
+
 ;; nice scrolling
 (setq scroll-margin 0
       scroll-conservatively 100000
@@ -109,3 +110,7 @@ This follows freedesktop standards, should work in X servers."
 (require 'uniquify)
 (setq uniquify-strip-common-suffix t)
 (setq uniquify-buffer-name-style 'post-forward)
+
+
+;; load the sessions related stuff
+(require 'sessions)
