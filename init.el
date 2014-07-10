@@ -27,6 +27,7 @@
 ;; Start eshell or switch to it if it's active.
 (global-set-key (kbd "C-x m") 'eshell)
 
+(global-set-key (kbd "C-S-k") 'kill-whole-line)
 (defun virtualanup-fullscreen ()
   "Make Emacs window fullscreen.
 

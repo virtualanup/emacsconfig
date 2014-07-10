@@ -14,7 +14,8 @@
   (unless name
     (setq name (session-name "Save session as: ")))
   (make-directory (concat session-dir name) t)
-  (desktop-save (concat session-dir name) t))
+  (desktop-save (concat session-dir name) t)
+)
 
 (defun session-load (&optional name)
   "Read desktop with a name."
