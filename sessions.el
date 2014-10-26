@@ -17,7 +17,7 @@
   (desktop-save (concat session-dir name) t)
 )
 
-(defun sl (&optional name)
+(defun so (&optional name)
   "Read desktop with a name."
   (interactive)
   (unless name

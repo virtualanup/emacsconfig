@@ -24,4 +24,10 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
+
+(custom-set-faces
+ '(flymake-errline ((((class color)) (:background nil))))
+ '(flymake-warnline ((((class color)) (:background nil)))))
+
+
 (provide 'appearance)

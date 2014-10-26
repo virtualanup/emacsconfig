@@ -357,9 +357,10 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
 	     (bm-fringe-face ((t (,@bg-orange ,@fg-base03))))
 	     (bm-fringe-persistent-face ((t (,@bg-blue ,@fg-base03))))
              ;; Flymake
-             (flymake-errline ((t (,@fmt-revr ,@fg-red ,@bg-back)))) ; ErrorMsg
-             (flymake-warnline ; WarningMsg
-              ((t (,@fmt-bold ,@fg-red ,@bg-back))))
+             ;; the flymake color are eye hurting for dark theme. So, removed.
+             ;;(flymake-errline ((t (,@fmt-revr ,@fg-red ,@bg-back)))) ; ErrorMsg
+             ;;(flymake-warnline ; WarningMsg
+             ;; ((t (,@fmt-bold ,@fg-red ,@bg-back))))
              ;; column-marker
              (column-marker-1 ((t (,@bg-base01))))
              (column-marker-2 ((t (,@bg-cyan))))

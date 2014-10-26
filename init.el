@@ -1,10 +1,26 @@
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+(elpy-enable)
+;; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+;; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+
+
+(setenv "PYTHONPATH" "/usr/bin/python")
 
 ;; add this directory to the load path
 (add-to-list 'load-path user-emacs-directory)
 
+(require 'flymake-cursor)
+
+
+
+
 ;;change appearance early during startup
 (require 'appearance)
-
 
 (setq inhibit-startup-message   t)   ; Don't want any startup message
 (setq make-backup-files         nil) ; Don't want any backup files
@@ -22,8 +38,10 @@
 ;; show file or buffer name
 (setq frame-title-format
       '("virtualanup - " (:eval (if (buffer-file-name)
-                                            (abbreviate-file-name (buffer-file-name))
-                                          "%b"))))
+                                    (abbreviate-file-name (buffer-file-name))
+                                  "%b"))))
+
+
 ;; Start eshell or switch to it if it's active.
 (global-set-key (kbd "C-x m") 'eshell)
 
@@ -44,7 +62,7 @@ This follows freedesktop standards, should work in X servers."
 
 
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
-(setq-default tab-width 8)            ;; but maintain correct appearance
+(setq-default tab-width 4)            ;; but maintain correct appearance
 
 (ido-mode t) ;load ido mode
 (iswitchb-mode t) ; load iswitchb mode
@@ -62,14 +80,14 @@ This follows freedesktop standards, should work in X servers."
    ))
 
 ;; set the default tabs in c, c++ etc to 4 spaces
- (setq
-          c-basic-offset 4)
+(setq
+ c-basic-offset 4)
 
 (defun replace-last-sexp ()
-    (interactive)
-    (let ((value (eval (preceding-sexp))))
-      (kill-sexp -1)
-      (insert (format "%S" value))))
+  (interactive)
+  (let ((value (eval (preceding-sexp))))
+    (kill-sexp -1)
+    (insert (format "%S" value))))
 
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
