@@ -66,6 +66,7 @@ This follows freedesktop standards, should work in X servers."
 
 (ido-mode t) ;load ido mode
 (iswitchb-mode t) ; load iswitchb mode
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; <enter> key automatically indents in programming mode
 (defun my-coding-config ()
@@ -133,3 +134,15 @@ This follows freedesktop standards, should work in X servers."
 
 ;; load the sessions related stuff
 (require 'sessions)
+
+(require 'ws-trim)
+(global-ws-trim-mode t)
+(set-default 'ws-trim-level 2)
+(setq ws-trim-global-modes '(guess (not message-mode eshell-mode)))
+(add-hook 'ws-trim-method-hook 'joc-no-tabs-in-java-hook)
+
+(defun joc-no-tabs-in-java-hook ()
+  "WS-TRIM Hook to strip all tabs in Java mode only"
+  (interactive)
+  (if (string= major-mode "jde-mode")
+      (ws-trim-tabs)))
