@@ -1,3 +1,6 @@
 [submodule "multiple-cursors.el"]
 	path = multiple-cursors.el
 	url = https://github.com/magnars/multiple-cursors.el
+[submodule "web-mode"]
+	path = web-mode
+	url = https://github.com/fxbois/web-mode.git

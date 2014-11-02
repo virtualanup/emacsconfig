@@ -25,7 +25,7 @@
 (setq inhibit-startup-message   t)   ; Don't want any startup message
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
-(setq auto-save-default         nil) ; Don't want any auto saving 
+(setq auto-save-default         nil) ; Don't want any auto saving
 
 ;; nice scrolling
 (setq scroll-margin 0
@@ -122,6 +122,11 @@ This follows freedesktop standards, should work in X servers."
 ;;add multiple cursor module
 (add-to-list 'load-path "~/.emacs.d/multiple-cursors.el")
 (require 'multiple-cursors)
+
+;;add web-mode module
+(add-to-list 'load-path "~/.emacs.d/web-mode")
+(require 'web-mode)
+
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -146,3 +151,16 @@ This follows freedesktop standards, should work in X servers."
   (interactive)
   (if (string= major-mode "jde-mode")
       (ws-trim-tabs)))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(setq web-mode-engines-alist '(("php" . "\\.phtml\\'") ("django" . "\\.html\\.")) )
+(define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-match)
