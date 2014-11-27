@@ -164,3 +164,10 @@ This follows freedesktop standards, should work in X servers."
 
 (setq web-mode-engines-alist '(("php" . "\\.phtml\\'") ("django" . "\\.html\\.")) )
 (define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-match)
+(put 'scroll-left 'disabled nil)
+
+
+(global-set-key (kbd "C-<up>") 'windmove-up)
+(global-set-key (kbd "C-<down>") 'windmove-down)
+(global-set-key (kbd "C-<left>") 'windmove-left)
+(global-set-key (kbd "C-<right>") 'windmove-right)
