@@ -3,6 +3,10 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 (elpy-enable)
+
+
+(global-hl-line-mode) ; highlight current line
+
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ;; Fixing another key binding bug in iedit mode
@@ -171,3 +175,4 @@ This follows freedesktop standards, should work in X servers."
 (global-set-key (kbd "C-<down>") 'windmove-down)
 (global-set-key (kbd "C-<left>") 'windmove-left)
 (global-set-key (kbd "C-<right>") 'windmove-right)
+(put 'downcase-region 'disabled nil)
