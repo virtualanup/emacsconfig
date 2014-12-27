@@ -5,6 +5,15 @@
 (elpy-enable)
 
 
+(setq user-full-name "Anup Pokhrel"
+      user-mail-address "virtualanup@gmail.com")
+
+(set-language-environment "UTF-8")
+
+(require 'server)
+(unless (server-running-p)
+(server-start))
+
 (global-hl-line-mode) ; highlight current line
 
 ;; Fixing a key binding bug in elpy
@@ -176,3 +185,4 @@ This follows freedesktop standards, should work in X servers."
 (global-set-key (kbd "C-<left>") 'windmove-left)
 (global-set-key (kbd "C-<right>") 'windmove-right)
 (put 'downcase-region 'disabled nil)
+
