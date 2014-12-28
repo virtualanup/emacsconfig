@@ -78,6 +78,16 @@ This follows freedesktop standards, should work in X servers."
 (setq-default tab-width 4)            ;; but maintain correct appearance
 
 (ido-mode t) ;load ido mode
+(setq ido-enable-prefix nil
+      ido-enable-flex-matching t ;; enable fuzzy matching
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10
+      )
+
 (iswitchb-mode t) ; load iswitchb mode
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
