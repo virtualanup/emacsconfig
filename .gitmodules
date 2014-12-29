@@ -7,3 +7,6 @@
 [submodule "expand-region"]
 	path = expand-region
 	url = https://github.com/magnars/expand-region.el.git
+[submodule "smart-forward"]
+	path = smart-forward
+	url = https://github.com/magnars/smart-forward.el.git
