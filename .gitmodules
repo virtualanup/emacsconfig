@@ -10,3 +10,6 @@
 [submodule "smart-forward"]
 	path = smart-forward
 	url = https://github.com/magnars/smart-forward.el.git
+[submodule "undo-tree"]
+	path = undo-tree
+	url = https://github.com/emacsmirror/undo-tree.git

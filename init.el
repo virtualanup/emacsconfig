@@ -33,6 +33,9 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+(add-to-list 'load-path "~/.emacs.d/undo-tree")
+(require 'undo-tree)
+
 (add-to-list 'load-path "~/.emacs.d/smart-forward")
 (require 'smart-forward)
 (global-set-key (kbd "M-<up>") 'smart-up)
