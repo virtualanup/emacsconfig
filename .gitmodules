@@ -13,3 +13,6 @@
 [submodule "undo-tree"]
 	path = undo-tree
 	url = https://github.com/emacsmirror/undo-tree.git
+[submodule "yasnippet"]
+	path = yasnippet
+	url = https://github.com/capitaomorte/yasnippet
