@@ -16,3 +16,6 @@
 [submodule "yasnippet"]
 	path = yasnippet
 	url = https://github.com/capitaomorte/yasnippet
+[submodule "auto-complete"]
+	path = auto-complete
+	url = https://github.com/auto-complete/auto-complete.git

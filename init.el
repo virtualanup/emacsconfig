@@ -18,16 +18,12 @@
 
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+
 ;; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 
-
-(setenv "PYTHONPATH" "/usr/bin/python")
-
 ;; add this directory to the load path
 (add-to-list 'load-path user-emacs-directory)
-
-(require 'flymake-cursor)
 
 (add-to-list 'load-path "~/.emacs.d/expand-region")
 (require 'expand-region)
@@ -204,6 +200,7 @@ This follows freedesktop standards, should work in X servers."
 
 ;; load the sessions related stuff
 (require 'sessions)
+(require 'python)
 
 (require 'ws-trim)
 (global-ws-trim-mode t)
