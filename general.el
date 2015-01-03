@@ -26,6 +26,18 @@ This follows freedesktop standards, should work in X servers."
 (global-set-key (kbd "<f11>") 'virtualanup-fullscreen))
 
 
+
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+`((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+`((".*" ,temporary-file-directory t)))
+;; autosave the undo-tree history
+(setq undo-tree-history-directory-alist
+`((".*" . ,temporary-file-directory)))
+(setq undo-tree-auto-save-history t)
+
+
 (ido-mode t) ;load ido mode
 (setq ido-enable-prefix nil
 ido-enable-flex-matching t ;; enable fuzzy matching
@@ -37,8 +49,8 @@ ido-handle-duplicate-virtual-buffers 2
 ido-max-prospects 10
 )
 
-(iswitchb-mode t) ; load iswitchb mode
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; load iswitchb mode
+(iswitchb-mode t) 
 
 ;; <enter> key automatically indents in programming mode
 (defun my-coding-config ()
@@ -76,7 +88,7 @@ c-basic-offset 4)
 (global-set-key (kbd "M-t p") 'transpose-params)
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c C-k") 'eval-buffer)
 
 ;; enable y/n answers instead of yes/no
