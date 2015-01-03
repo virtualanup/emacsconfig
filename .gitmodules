@@ -1,21 +1,18 @@
 [submodule "multiple-cursors.el"]
-	path = multiple-cursors.el
-	url = https://github.com/magnars/multiple-cursors.el
+    path = multiple-cursors.el
+    url = https://github.com/magnars/multiple-cursors.el
 [submodule "web-mode"]
-	path = web-mode
-	url = https://github.com/fxbois/web-mode.git
+    path = web-mode
+    url = https://github.com/fxbois/web-mode.git
 [submodule "expand-region"]
-	path = expand-region
-	url = https://github.com/magnars/expand-region.el.git
+    path = expand-region
+    url = https://github.com/magnars/expand-region.el.git
 [submodule "smart-forward"]
-	path = smart-forward
-	url = https://github.com/magnars/smart-forward.el.git
+    path = smart-forward
+    url = https://github.com/magnars/smart-forward.el.git
 [submodule "undo-tree"]
-	path = undo-tree
-	url = https://github.com/emacsmirror/undo-tree.git
+    path = undo-tree
+    url = https://github.com/emacsmirror/undo-tree.git
 [submodule "yasnippet"]
-	path = yasnippet
-	url = https://github.com/capitaomorte/yasnippet
-[submodule "auto-complete"]
-	path = auto-complete
-	url = https://github.com/auto-complete/auto-complete.git
+    path = yasnippet
+    url = https://github.com/capitaomorte/yasnippet

@@ -4,6 +4,7 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+(setq package-archive-enable-alist '(("melpa" deft magit)))
 (elpy-enable)
 
 
