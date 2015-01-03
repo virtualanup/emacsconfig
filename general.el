@@ -104,6 +104,8 @@ scroll-preserve-screen-position 1)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 
+;; Ace Jump
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
 (defun ido-imenu ()
