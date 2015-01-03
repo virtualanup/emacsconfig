@@ -3,7 +3,7 @@
 ;; http://virtualanup.com
 
 
-(defvar root-dir user-emacs-directory
+(defvar root-dir (file-name-directory load-file-name)
 "The root dir of this configuration.")
 (defvar temporary-file-directory (concat root-dir "temp"))
 
