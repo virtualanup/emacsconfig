@@ -111,6 +111,12 @@ scroll-preserve-screen-position 1)
 (global-unset-key (kbd "M-o"))
 (global-set-key (kbd "M-o") 'ace-window)
 
+;; Anzu settings
+(global-anzu-mode +1)
+(global-set-key (kbd "M-%") 'anzu-query-replace)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+
+
 (defun ido-imenu ()
 "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
