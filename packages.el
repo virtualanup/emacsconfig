@@ -19,6 +19,8 @@
     expand-region
     undo-tree
     browse-kill-ring
+    ace-jump-mode
+    
     )
   "A list of packages to ensure are installed at launch.")
 
