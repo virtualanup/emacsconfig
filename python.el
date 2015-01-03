@@ -1,9 +1,7 @@
 ;; python.el
 ;; Python related settings
 
-(setenv "PYTHONPATH" "/usr/bin/python")
-
-(require 'flymake-cursor)
+(setenv "PYTHONPATH" "/usr/bin/python3")
 
 (provide 'python)
 

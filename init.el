@@ -3,7 +3,7 @@
 ;; http://virtualanup.com
 
 
-(defvar root-dir (file-name-directory load-file-name)
+(defvar root-dir user-emacs-directory
 "The root dir of this configuration.")
 (defvar temporary-file-directory (concat root-dir "temp"))
 
@@ -18,7 +18,6 @@
 
 ;; include some modules
 (require 'sessions)
-(require 'python)
 
 (setq user-full-name "Anup Pokhrel"
       user-mail-address "virtualanup@gmail.com")
