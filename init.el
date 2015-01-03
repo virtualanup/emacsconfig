@@ -1,12 +1,23 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-(setq package-archive-enable-alist '(("melpa" deft magit)))
-(elpy-enable)
+;; Emacs Configuration
+;; by Virtualanup
+;; http://virtualanup.com
 
+
+(defvar root-dir (file-name-directory load-file-name)
+"The root dir of this configuration.")
+
+(add-to-list 'load-path root-dir)
+
+
+;;change appearance early during startup
+(require 'appearance)
+
+;; Load the required packages
+(require 'packages)
+
+;; include some modules
+(require 'sessions)
+(require 'python)
 
 (setq user-full-name "Anup Pokhrel"
       user-mail-address "virtualanup@gmail.com")
@@ -17,224 +28,4 @@
 (unless (server-running-p)
   (server-start))
 
-(global-hl-line-mode) ; highlight current line
-
-;; Fixing a key binding bug in elpy
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-
-;; Fixing another key binding bug in iedit mode
-(define-key global-map (kbd "C-c o") 'iedit-mode)
-
-;; add this directory to the load path
-(add-to-list 'load-path user-emacs-directory)
-
-(add-to-list 'load-path "~/.emacs.d/expand-region")
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
-(add-to-list 'load-path "~/.emacs.d/undo-tree")
-(require 'undo-tree)
-
-(add-to-list 'load-path
-             "~/.emacs.d/yasnippet")
-(require 'yasnippet)
-(yas-global-mode 1)
-;; Completing point by some yasnippet key
-(defun yas-ido-expand ()
-  "Lets you select (and expand) a yasnippet key"
-  (interactive)
-  (let ((original-point (point)))
-    (while (and
-            (not (= (point) (point-min) ))
-            (not
-             (string-match "[[:space:]\n]" (char-to-string (char-before)))))
-      (backward-word 1))
-    (let* ((init-word (point))
-           (word (buffer-substring init-word original-point))
-           (list (yas-active-keys)))
-      (goto-char original-point)
-      (let ((key (remove-if-not
-                  (lambda (s) (string-match (concat "^" word) s)) list)))
-        (if (= (length key) 1)
-            (setq key (pop key))
-          (setq key (ido-completing-read "key: " list nil nil word)))
-        (delete-char (- init-word original-point))
-        (insert key)
-        (yas-expand)))))
-
-(define-key yas-minor-mode-map (kbd "<C-tab>")     'yas-ido-expand)
-
-
-
-(add-to-list 'load-path "~/.emacs.d/smart-forward")
-(require 'smart-forward)
-(global-set-key (kbd "M-<up>") 'smart-up)
-(global-set-key (kbd "M-<down>") 'smart-down)
-(global-set-key (kbd "M-<left>") 'smart-backward)
-(global-set-key (kbd "M-<right>") 'smart-forward)
-
-;;change appearance early during startup
-(require 'appearance)
-
-(setq inhibit-startup-message   t)   ; Don't want any startup message
-(setq make-backup-files         nil) ; Don't want any backup files
-(setq auto-save-list-file-name  nil) ; Don't want any .saves files
-(setq auto-save-default         nil) ; Don't want any auto saving
-
-;; nice scrolling
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
-
-;; enable y/n answers instead of yes/no
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; show file or buffer name
-(setq frame-title-format
-      '("virtualanup - " (:eval (if (buffer-file-name)
-                                    (abbreviate-file-name (buffer-file-name))
-                                  "%b"))))
-
-
-;; Start eshell or switch to it if it's active.
-(global-set-key (kbd "C-x m") 'eshell)
-
-(global-set-key (kbd "C-S-k") 'kill-whole-line)
-(defun virtualanup-fullscreen ()
-  "Make Emacs window fullscreen.
-
-This follows freedesktop standards, should work in X servers."
-  (interactive)
-  (if (eq window-system 'x)
-      (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                             '(2 "_NET_WM_STATE_FULLSCREEN" 0))
-    (error "Only X server is supported")))
-
-(unless (fboundp 'toggle-frame-fullscreen)
-  (global-set-key (kbd "<f11>") 'virtualanup-fullscreen))
-
-
-
-(setq-default indent-tabs-mode nil)   ;; don't use tabs to indent
-(setq-default tab-width 4)            ;; but maintain correct appearance
-
-(ido-mode t) ;load ido mode
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t ;; enable fuzzy matching
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10
-      )
-
-(iswitchb-mode t) ; load iswitchb mode
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-;; <enter> key automatically indents in programming mode
-(defun my-coding-config ()
-  (local-set-key (kbd "RET") (key-binding (kbd "C-j")))
-  (local-set-key (kbd "<S-return>") 'newline)
-  )
-
-(mapc
- (lambda (language-mode-hook)
-   (add-hook language-mode-hook 'my-coding-config))
- '(prog-mode-hook
-   ))
-
-;; set the default tabs in c, c++ etc to 4 spaces
-(setq
- c-basic-offset 4)
-
-(defun replace-last-sexp ()
-  (interactive)
-  (let ((value (eval (preceding-sexp))))
-    (kill-sexp -1)
-    (insert (format "%S" value))))
-
-(windmove-default-keybindings)
-(setq windmove-wrap-around t)
-
-;; Use shell-like backspace C-h, rebind help to F1
-(define-key key-translation-map [?\C-h] [?\C-?])
-(global-set-key (kbd "<f1>") 'help-command)
-
-;;use alt-h for deleting previous word
-(global-set-key (kbd "M-h") 'backward-kill-word)
-
-
-
-;; Transpose stuff with M-t
-(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
-(global-set-key (kbd "M-t l") 'transpose-lines)
-(global-set-key (kbd "M-t w") 'transpose-words)
-(global-set-key (kbd "M-t s") 'transpose-sexps)
-(global-set-key (kbd "M-t p") 'transpose-params)
-
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
-
-
-;; Comment/uncomment block
-(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
-(global-set-key (kbd "C-c u") 'uncomment-region)
-
-(global-set-key (kbd "C-c C-k") 'eval-buffer)
-
-;;add multiple cursor module
-(add-to-list 'load-path "~/.emacs.d/multiple-cursors.el")
-(require 'multiple-cursors)
-
-;;add web-mode module
-(add-to-list 'load-path "~/.emacs.d/web-mode")
-(require 'web-mode)
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-(require 'uniquify)
-(setq uniquify-strip-common-suffix t)
-(setq uniquify-buffer-name-style 'post-forward)
-
-
-;; load the sessions related stuff
-(require 'sessions)
-(require 'python)
-
-(require 'ws-trim)
-(global-ws-trim-mode t)
-(set-default 'ws-trim-level 2)
-(setq ws-trim-global-modes '(guess (not message-mode eshell-mode)))
-(add-hook 'ws-trim-method-hook 'joc-no-tabs-in-java-hook)
-
-(defun joc-no-tabs-in-java-hook ()
-  "WS-TRIM Hook to strip all tabs in Java mode only"
-  (interactive)
-  (if (string= major-mode "jde-mode")
-      (ws-trim-tabs)))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-(setq web-mode-engines-alist '(("php" . "\\.phtml\\'") ("django" . "\\.html\\.")) )
-(define-key web-mode-map (kbd "C-c C-t") 'web-mode-tag-match)
-(put 'scroll-left 'disabled nil)
-
-
-(global-set-key (kbd "C-<up>") 'windmove-up)
-(global-set-key (kbd "C-<down>") 'windmove-down)
-(global-set-key (kbd "C-<left>") 'windmove-left)
-(global-set-key (kbd "C-<right>") 'windmove-right)
-(put 'downcase-region 'disabled nil)
-
+(require 'general)

@@ -8,6 +8,7 @@
 (defvar session-name-history nil
   "Desktop session name history")
 
+;; Session Save
 (defun ss (&optional name)
   "Save desktop with a name."
   (interactive)
@@ -17,6 +18,7 @@
   (desktop-save (concat session-dir name) t)
 )
 
+;; Session Open
 (defun so (&optional name)
   "Read desktop with a name."
   (interactive)

@@ -1,4 +1,4 @@
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path (concat root-dir "themes"))
 
 (load-theme 'solarized-dark t)
 
