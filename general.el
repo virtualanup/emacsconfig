@@ -107,6 +107,9 @@ scroll-preserve-screen-position 1)
 ;; Ace Jump
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
+;; Ace window
+(global-unset-key (kbd "M-o"))
+(global-set-key (kbd "M-o") 'ace-window)
 
 (defun ido-imenu ()
 "Update the imenu index and then use ido to select a symbol to navigate to.
