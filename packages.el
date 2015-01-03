@@ -20,6 +20,7 @@
     undo-tree
     browse-kill-ring
     ace-jump-mode
+    ace-jump-buffer
     
     )
   "A list of packages to ensure are installed at launch.")
