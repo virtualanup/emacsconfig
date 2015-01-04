@@ -169,6 +169,7 @@ scroll-preserve-screen-position 1)
 ;; Helm
 (global-set-key (kbd "M-x") 'helm-M-x)
 (helm-mode 1)
+(set-face-attribute 'helm-selection nil :background nil)
 
 
 (defun ido-imenu ()
