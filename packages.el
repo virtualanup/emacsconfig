@@ -38,6 +38,7 @@
     projectile
     multiple-cursors
     rainbow-mode
+    helm
     )
   "A list of packages to ensure are installed at launch.")
 

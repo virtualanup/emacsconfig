@@ -38,7 +38,7 @@ This follows freedesktop standards, should work in X servers."
 (setq undo-tree-auto-save-history t)
 
 
-(ido-mode t) ;load ido mode
+;; (ido-mode t) ;load ido mode
 (setq ido-enable-prefix nil
 ido-enable-flex-matching t ;; enable fuzzy matching
 ido-auto-merge-work-directories-length nil
@@ -50,7 +50,7 @@ ido-max-prospects 10
 )
 
 ;; load iswitchb mode
-(iswitchb-mode t) 
+;; (iswitchb-mode t) 
 
 ;; <enter> key automatically indents in programming mode
 (defun my-coding-config ()
@@ -164,6 +164,11 @@ scroll-preserve-screen-position 1)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
+;; Helm
+(global-set-key (kbd "M-x") 'helm-M-x)
+(helm-mode 1)
 
 
 (defun ido-imenu ()
