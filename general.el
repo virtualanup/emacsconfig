@@ -133,6 +133,13 @@ scroll-preserve-screen-position 1)
 (projectile-global-mode)
 
 
+;; Multiple Cursors
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+
 (defun ido-imenu ()
 "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."

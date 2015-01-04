@@ -36,6 +36,7 @@
     guru-mode
     ov
     projectile
+    multiple-cursors
     )
   "A list of packages to ensure are installed at launch.")
 
