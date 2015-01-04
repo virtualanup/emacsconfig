@@ -25,7 +25,17 @@
     anzu
     dash
     discover-my-major
-    
+    diff-hl
+    easy-kill
+    elisp-slime-nav
+    epl
+    flycheck
+    gist
+    git-timemachine
+    grizzl
+    guru-mode
+    ov
+    projectile
     )
   "A list of packages to ensure are installed at launch.")
 

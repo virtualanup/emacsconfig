@@ -117,6 +117,22 @@ scroll-preserve-screen-position 1)
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
 
+;; Diff-hl mode
+;; (setq diff-hl-fringe-bmp-function 'diff-hl-fringe-bmp-from-type)
+;; (global-diff-hl-mode 1)
+
+;; Easy Kill
+(global-set-key [remap kill-ring-save] 'easy-kill)
+(global-set-key [remap mark-sexp] 'easy-mark)
+
+;; Guru mode
+(guru-global-mode +1)
+(add-hook 'prog-mode-hook 'guru-mode)
+
+;; Projectile
+(projectile-global-mode)
+
+
 (defun ido-imenu ()
 "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
