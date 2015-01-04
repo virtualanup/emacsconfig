@@ -171,6 +171,16 @@ scroll-preserve-screen-position 1)
 (helm-mode 1)
 (set-face-attribute 'helm-selection nil :background nil)
 
+;; Auto Complete
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+(set-default 'ac-sources
+             '(ac-source-imenu
+               ac-source-dictionary
+               ac-source-words-in-buffer
+               ac-source-words-in-same-mode-buffers
+               ac-source-words-in-all-buffer))
+               
 
 (defun ido-imenu ()
 "Update the imenu index and then use ido to select a symbol to navigate to.
