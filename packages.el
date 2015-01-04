@@ -37,6 +37,7 @@
     ov
     projectile
     multiple-cursors
+    rainbow-mode
     )
   "A list of packages to ensure are installed at launch.")
 
