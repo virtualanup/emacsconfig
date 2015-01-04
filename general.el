@@ -79,6 +79,19 @@ c-basic-offset 4)
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 
+
+;; flyspell-mode does spell-checking on the fly as you type
+(require 'flyspell)
+(setq ispell-program-name "aspell" ; use aspell instead of ispell
+ispell-extra-args '("--sug-mode=ultra"))
+
+(defun enable-flyspell ()
+"Enable command `flyspell-mode' "
+(when (executable-find ispell-program-name)
+(flyspell-mode +1)))
+
+(enable-flyspell)
+
 ;; Use shell-like backspace C-h, rebind help to F1
 (define-key key-translation-map [?\C-h] [?\C-?])
 (global-set-key (kbd "<f1>") 'help-command)
