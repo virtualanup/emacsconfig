@@ -81,6 +81,10 @@ c-basic-offset 4)
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+
 
 ;; flyspell-mode does spell-checking on the fly as you type
 (require 'flyspell)
