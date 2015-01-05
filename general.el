@@ -66,6 +66,8 @@ ido-max-prospects 10
 (setq
 c-basic-offset 4)
 
+;; delete the selection with a keypress
+(delete-selection-mode t)
 
 ;; revert buffers automatically when underlying files are changed externally
 (global-auto-revert-mode t)
@@ -177,7 +179,7 @@ scroll-preserve-screen-position 1)
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
-      helm-ff-auto-update-initial-value      t
+      helm-ff-auto-update-initial-value     t
       )
 (global-set-key (kbd "C-x b") 'helm-mini)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebihnd tab to do persistent action
@@ -185,7 +187,6 @@ scroll-preserve-screen-position 1)
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 (set-face-attribute 'helm-selection nil :background nil)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-
 
 ;; Auto Complete
 (require 'auto-complete-config)
@@ -196,7 +197,24 @@ scroll-preserve-screen-position 1)
                ac-source-words-in-buffer
                ac-source-words-in-same-mode-buffers
                ac-source-words-in-all-buffer))
-               
+
+
+;; Helm projectile
+(helm-projectile-on)
+
+(defun eval-and-replace ()
+"Replace the preceding sexp with its value."
+(interactive)
+(backward-kill-sexp)
+(condition-case nil
+(prin1 (eval (read (current-kill 0)))
+(current-buffer))
+(error (message "Invalid expression")
+(insert (current-kill 0)))))
+
+;; Should be able to eval-and-replace anywhere.
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
 
 (defun ido-imenu ()
 "Update the imenu index and then use ido to select a symbol to navigate to.

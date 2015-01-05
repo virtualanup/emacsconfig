@@ -39,6 +39,7 @@
     multiple-cursors
     rainbow-mode
     helm
+    helm-projectile
     auto-complete
     )
   "A list of packages to ensure are installed at launch.")
