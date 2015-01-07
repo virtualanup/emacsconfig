@@ -50,7 +50,7 @@ ido-max-prospects 10
 )
 
 ;; load iswitchb mode
-;; (iswitchb-mode t) 
+;; (iswitchb-mode t)
 
 ;; <enter> key automatically indents in programming mode
 (defun my-coding-config ()
@@ -97,20 +97,20 @@ c-basic-offset 4)
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 
 ;; flyspell-mode does spell-checking on the fly as you type
-(require 'flyspell)
-(setq ispell-program-name "aspell" ; use aspell instead of ispell
-ispell-extra-args '("--sug-mode=ultra"))
+;; (require 'flyspell)
+;; (setq ispell-program-name "aspell" ; use aspell instead of ispell
+;; ispell-extra-args '("--sug-mode=ultra"))
 
-(defun enable-flyspell ()
-"Enable command `flyspell-mode' "
-(when (executable-find ispell-program-name)
-(flyspell-mode +1)))
+;; (defun enable-flyspell ()
+;; "Enable command `flyspell-mode' "
+;; (when (executable-find ispell-program-name)
+;; (flyspell-mode +1)))
 
-(enable-flyspell)
+;; (enable-flyspell)
 
 ;; Use shell-like backspace C-h, rebind help to F1
 (define-key key-translation-map [?\C-h] [?\C-?])
@@ -248,15 +248,15 @@ Symbols matching the text at point are put first in the completion list."
 (cond
 ((and (listp symbol) (imenu--subalist-p symbol))
 (addsymbols symbol))
- 
+
 ((listp symbol)
 (setq name (car symbol))
 (setq position (cdr symbol)))
- 
+
 ((stringp symbol)
 (setq name symbol)
 (setq position (get-text-property 1 'org-imenu-marker symbol))))
- 
+
 (unless (or (null position) (null name))
 (add-to-list 'symbol-names name)
 (add-to-list 'name-and-pos (cons name position))))))))
@@ -274,17 +274,17 @@ symbol-names))))
 matching-symbols)))))
 (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
 (position (cdr (assoc selected-symbol name-and-pos))))
-(goto-char position)))) 
+(goto-char position))))
 
 ;; Push mark when using ido-imenu
 (defvar push-mark-before-goto-char nil)
- 
+
 (defadvice goto-char (before push-mark-first activate)
 (when push-mark-before-goto-char
 (push-mark)))
- 
+
 (defun ido-imenu-push-mark ()
 (interactive)
 (let ((push-mark-before-goto-char t))
-(ido-imenu))) 
+(ido-imenu)))
 (provide 'general)
