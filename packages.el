@@ -41,6 +41,7 @@
     helm
     helm-projectile
     auto-complete
+    magit
     )
   "A list of packages to ensure are installed at launch.")
 
