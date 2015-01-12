@@ -40,6 +40,7 @@
     rainbow-mode
     helm
     helm-projectile
+    helm-swoop
     auto-complete
     magit
     )
