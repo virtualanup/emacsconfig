@@ -26,7 +26,7 @@ This follows freedesktop standards, should work in X servers."
 (global-set-key (kbd "<f11>") 'virtualanup-fullscreen))
 
 
-
+(setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
 `((".*" . ,temporary-file-directory)))
@@ -63,8 +63,9 @@ ido-max-prospects 10
 '(prog-mode-hook
 ))
 ;; set the default tabs in c, c++ etc to 4 spaces
-(setq
-c-basic-offset 4)
+ (setq c-default-style "linux"
+          c-basic-offset 4)
+
 
 ;; delete the selection with a keypress
 (delete-selection-mode t)
