@@ -38,9 +38,9 @@
     projectile
     multiple-cursors
     rainbow-mode
-    helm
-    helm-projectile
-    helm-swoop
+    ;; helm
+    ;; helm-projectile
+    ;; helm-swoop
     auto-complete
     magit
     )
