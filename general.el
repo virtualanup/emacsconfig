@@ -38,7 +38,7 @@ This follows freedesktop standards, should work in X servers."
 (setq undo-tree-auto-save-history t)
 
 
-;; (ido-mode t) ;load ido mode
+(ido-mode t) ;load ido mode
 (setq ido-enable-prefix nil
 ido-enable-flex-matching t ;; enable fuzzy matching
 ido-auto-merge-work-directories-length nil
@@ -50,7 +50,7 @@ ido-max-prospects 10
 )
 
 ;; load iswitchb mode
-;; (iswitchb-mode t)
+(iswitchb-mode t)
 
 ;; <enter> key automatically indents in programming mode
 (defun my-coding-config ()
@@ -288,4 +288,12 @@ matching-symbols)))))
 (interactive)
 (let ((push-mark-before-goto-char t))
 (ido-imenu)))
+
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
 (provide 'general)

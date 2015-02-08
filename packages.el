@@ -43,6 +43,7 @@
     ;; helm-swoop
     auto-complete
     magit
+    multi-web-mode
     )
   "A list of packages to ensure are installed at launch.")
 
