@@ -177,7 +177,7 @@ scroll-preserve-screen-position 1)
 (add-hook 'prog-mode-hook 'guru-mode)
 
 ;; Projectile
-(projectile-global-mode)
+;; (projectile-global-mode)
 
 
 ;; Multiple Cursors
