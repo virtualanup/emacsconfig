@@ -7,7 +7,9 @@
 "The root dir of this configuration.")
 (defvar temporary-file-directory (concat root-dir "temp"))
 
-(add-to-list 'load-path root-dir)
+(defvar config-directory (concat root-dir "config"))
+
+(add-to-list 'load-path config-directory)
 
 
 ;;change appearance early during startup

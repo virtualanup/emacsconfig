@@ -49,12 +49,9 @@ ido-handle-duplicate-virtual-buffers 2
 ido-max-prospects 10
 )
 
-;; load iswitchb mode
-(iswitchb-mode t)
-
 ;; <enter> key automatically indents in programming mode
 (defun my-coding-config ()
-(local-set-key (kbd "RET") (key-binding (kbd "C-j")))
+(local-set-key (kbd "RET") 'newline-and-indent)
 (local-set-key (kbd "<S-return>") 'newline)
 )
 (mapc
