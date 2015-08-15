@@ -31,3 +31,4 @@
   (server-start))
 
 (require 'general)
+(put 'upcase-region 'disabled nil)

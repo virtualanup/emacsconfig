@@ -44,6 +44,7 @@
     auto-complete
     magit
     multi-web-mode
+    smex
     )
   "A list of packages to ensure are installed at launch.")
 
