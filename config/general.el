@@ -144,7 +144,8 @@ scroll-preserve-screen-position 1)
 
 ;; Expand Region
 (global-set-key (kbd "C-=") 'er/expand-region)
-
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
 
 ;; Ace Jump
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -158,7 +159,12 @@ scroll-preserve-screen-position 1)
 (global-set-key (kbd "M-%") 'anzu-query-replace)
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 (set-face-attribute 'anzu-mode-line nil
-                    :foreground nil :weight 'bold)
+                    :foreground "white" :weight 'bold)
+(custom-set-variables
+ '(anzu-mode-lighter "")
+ '(anzu-deactivate-region t)
+ '(anzu-search-threshold 1000)
+ '(anzu-replace-to-string-separator " => "))
 
 
 ;; Diff-hl mode

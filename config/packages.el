@@ -45,6 +45,7 @@
     magit
     multi-web-mode
     smex
+    change-inner
     )
   "A list of packages to ensure are installed at launch.")
 
