@@ -15,7 +15,7 @@
 (blink-cursor-mode -1)
 
 ;;remove the menu bar
-(menu-bar-mode -1) 
+(menu-bar-mode -1)
 
 ;; remove the toolbar
 (when (fboundp 'tool-bar-mode)
@@ -28,6 +28,5 @@
 (custom-set-faces
  '(flymake-errline ((((class color)) (:background nil))))
  '(flymake-warnline ((((class color)) (:background nil)))))
-
 
 (provide 'appearance)

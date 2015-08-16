@@ -58,7 +58,7 @@ ido-max-prospects 10
 '(prog-mode-hook
 ))
 ;; set the default tabs in c, c++ etc to 4 spaces
- (setq c-default-style "linux"
+ (setq c-default-style "gnu"
           c-basic-offset 4)
 
 
@@ -157,6 +157,8 @@ scroll-preserve-screen-position 1)
 (global-anzu-mode +1)
 (global-set-key (kbd "M-%") 'anzu-query-replace)
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+(set-face-attribute 'anzu-mode-line nil
+                    :foreground nil :weight 'bold)
 
 
 ;; Diff-hl mode
