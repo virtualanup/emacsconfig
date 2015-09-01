@@ -78,15 +78,15 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
 
 (defun solarized-color-definitions (mode)
   (flet ((find-color (name)
-           (let* ((index (if window-system
-                             (if solarized-degrade
-                                 3
-                               (if solarized-broken-srgb 2 1))
-                           (case (display-color-cells)
-                             (16 4)
-                             (8  5)
-                             (otherwise 3)))))
-             (nth index (assoc name solarized-colors)))))
+                     (let* ((index (if window-system
+                                       (if solarized-degrade
+                                           3
+                                         (if solarized-broken-srgb 2 1))
+                                     (case (display-color-cells)
+                                       (16 4)
+                                       (8  5)
+                                       (otherwise 3)))))
+                       (nth index (assoc name solarized-colors)))))
     (let ((base03      (find-color 'base03))
           (base02      (find-color 'base02))
           (base01      (find-color 'base01))
@@ -143,7 +143,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
               (bg-violet `(:background ,violet))
               (bg-blue `(:background ,blue))
               (bg-cyan `(:background ,cyan))
-              
+
               (fg-base03 `(:foreground ,base03))
               (fg-base02 `(:foreground ,base02))
               (fg-base01 `(:foreground ,base01))
@@ -264,12 +264,12 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
 
              ;; HELM
 
-            (helm-source-header ((t (,@fg-base01 ,@bg-base02 :height 1.2 ,@fmt-none))))
-            (helm-ff-directory ((t (,@fg-cyan :background nil))))
-            (helm-candidate-number ((t (,@fmt-undr ,@fg-blue :background nil))))
-            (helm-ff-file ((t (:inherit default))))
-            (helm-ff-executable ((t (,@fg-green))))
-            (helm-selection ((t (,@bg-blue ,@fg-red ,@fmt-none))))
+             (helm-source-header ((t (,@fg-base01 ,@bg-base02 :height 1.2 ,@fmt-none))))
+             (helm-ff-directory ((t (,@fg-cyan :background nil))))
+             (helm-candidate-number ((t (,@fmt-undr ,@fg-blue :background nil))))
+             (helm-ff-file ((t (:inherit default))))
+             (helm-ff-executable ((t (,@fg-green))))
+             (helm-selection ((t (,@bg-blue ,@fg-red ,@fmt-none))))
 
              ;; emacs-wiki
              (emacs-wiki-bad-link-face ((t (,@fmt-undr ,@fg-red))))
@@ -363,9 +363,9 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (widget-single-line-field ((t (:inherit widget-field))))
              ;; extra modules
              ;; -------------
-	     ;; bm visual bookmarks
-	     (bm-fringe-face ((t (,@bg-orange ,@fg-base03))))
-	     (bm-fringe-persistent-face ((t (,@bg-blue ,@fg-base03))))
+             ;; bm visual bookmarks
+             (bm-fringe-face ((t (,@bg-orange ,@fg-base03))))
+             (bm-fringe-persistent-face ((t (,@bg-blue ,@fg-base03))))
              ;; Flymake
              ;; the flymake color are eye hurting for dark theme. So, removed.
              ;;(flymake-errline ((t (,@fmt-revr ,@fg-red ,@bg-back)))) ; ErrorMsg
@@ -392,10 +392,10 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (jabber-roster-user-offline ((t (,@fg-base01))))
              (jabber-roster-user-online ((t (,@fmt-bold ,@fg-blue))))
              (jabber-roster-user-xa ((t (,@fmt-ital ,@fg-magenta))))
-	     ;; git-gutter
-	     (git-gutter:modified ((t (,@fg-violet))))
-	     (git-gutter:added ((t (,@fg-green))))
-	     (git-gutter:deleted ((t (,@fg-red))))
+             ;; git-gutter
+             (git-gutter:modified ((t (,@fg-violet))))
+             (git-gutter:added ((t (,@fg-green))))
+             (git-gutter:deleted ((t (,@fg-red))))
              ;; gnus - these are taken from mutt, not VIM
              (gnus-cite-1 ((t (,@fmt-none ,@fg-blue)))) ; quoted
              (gnus-cite-2 ((t (,@fmt-none ,@fg-cyan)))) ; quoted1
@@ -533,22 +533,22 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              ;;flyspell
              (flyspell-incorrect ((t (,@fg-red))))
              (flyspell-duplicate ((t (,@fg-yellow))))
-	     ;;ansi-term
-	     (term-color-black ((t ( ,@fg-base02))))
-	     (term-color-red ((t ( ,@fg-red))))
-	     (term-color-green ((t ( ,@fg-green))))
-	     (term-color-yellow ((t ( ,@fg-yellow))))
-	     (term-color-blue ((t ( ,@fg-blue))))
-	     (term-color-magenta ((t ( ,@fg-magenta))))
-	     (term-color-cyan ((t ( ,@fg-cyan))))
-	     (term-color-white ((t ( ,@fg-base00)))))
+             ;;ansi-term
+             (term-color-black ((t ( ,@fg-base02))))
+             (term-color-red ((t ( ,@fg-red))))
+             (term-color-green ((t ( ,@fg-green))))
+             (term-color-yellow ((t ( ,@fg-yellow))))
+             (term-color-blue ((t ( ,@fg-blue))))
+             (term-color-magenta ((t ( ,@fg-magenta))))
+             (term-color-cyan ((t ( ,@fg-cyan))))
+             (term-color-white ((t ( ,@fg-base00)))))
 
             ((foreground-color . ,(when (<= 16 (display-color-cells)) base0))
              (background-color . ,back)
              (background-mode . ,mode)
              (cursor-color . ,(when (<= 16 (display-color-cells))
                                 base0))
-	     (ansi-color-names-vector . [,base02 ,red ,green ,yellow ,blue ,magenta ,cyan ,base00]))))))))
+             (ansi-color-names-vector . [,base02 ,red ,green ,yellow ,blue ,magenta ,cyan ,base00]))))))))
 
 (defmacro create-solarized-theme (mode)
   (let* ((theme-name (intern (concat "solarized-" (symbol-name mode))))

@@ -316,4 +316,11 @@ matching-symbols)))))
 ;; autocomplete paired brackets
 (electric-pair-mode 1)
 
+;; fill-column-indicator settings
+(setq fci-rule-column 80)
+(setq fci-rule-color "#666666")
+(add-hook 'prog-mode-hook (lambda ()
+    (fci-mode 1)
+    ))
+
 (provide 'general)
