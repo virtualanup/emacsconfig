@@ -190,6 +190,11 @@ scroll-preserve-screen-position 1)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 
+(add-hook 'sgml-mode-hook
+          (lambda ()
+            (define-key sgml-mode-map (kbd "C-c C-r") 'mc/mark-sgml-tag-pair)))
+
+
 ;; Helm
 ;; (global-set-key (kbd "M-x") 'helm-M-x)
 ;; (helm-mode 1)
@@ -307,4 +312,8 @@ matching-symbols)))))
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; autocomplete paired brackets
+(electric-pair-mode 1)
+
 (provide 'general)

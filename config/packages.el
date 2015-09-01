@@ -46,6 +46,7 @@
     multi-web-mode
     smex
     change-inner
+    web-mode
     )
   "A list of packages to ensure are installed at launch.")
 
