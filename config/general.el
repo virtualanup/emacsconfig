@@ -313,6 +313,9 @@ matching-symbols)))))
 ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
+;; disable emacs window disappearing on Ctrl-z
+(global-unset-key (kbd "C-z"))
+
 ;; autocomplete paired brackets
 (electric-pair-mode 1)
 

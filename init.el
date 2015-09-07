@@ -11,12 +11,11 @@
 
 (add-to-list 'load-path config-directory)
 
+;; Load the required packages
+(require 'packages)
 
 ;;change appearance early during startup
 (require 'appearance)
-
-;; Load the required packages
-(require 'packages)
 
 ;; include some modules
 (require 'sessions)

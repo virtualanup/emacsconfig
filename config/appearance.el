@@ -1,6 +1,4 @@
-(add-to-list 'custom-theme-load-path (concat root-dir "themes"))
-
-(load-theme 'solarized-dark t)
+(load-theme 'darkburn t)
 
 ;;nice line numbering
 (global-linum-mode t)

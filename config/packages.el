@@ -16,6 +16,10 @@
 
 (defvar prelude-packages
   '(
+
+    ;; Theme based packages
+    darkburn-theme
+
     expand-region
     undo-tree
     browse-kill-ring
