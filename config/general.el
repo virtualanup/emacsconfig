@@ -326,4 +326,7 @@ matching-symbols)))))
     (fci-mode 1)
     ))
 
+;; Magit settings
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 (provide 'general)
